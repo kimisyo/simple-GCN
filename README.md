@@ -24,9 +24,6 @@ optional arguments:
   -es             do early stopping
 ```
 
--The model is saved with the contents specified by check_point.
-You can specify the save location with `` `dirpath``` and how many items with the best verification accuracy are saved with `` `save_top_k```. The index at that time is set by ``` mertics```, and whether the accuracy should be large or small is specified by `` `minimize```. This index is common to the following early_stopping and hyperparameter search indexes.
-
 ## config file
 ```regression.py
 model_params = {
@@ -51,7 +48,7 @@ model_params = {
         "dirpath": 'model', # model save path
         "save_top_k": 3, # save top k metrics model
         },
-    'early_stopping': # see https://pytorch-lightning.readthedocs.io/en/stable/generated/pytorch_lightning.callbacks.EarlyStopping.html
+    'early_stopping':
         {
         "min_delta": 0.00,
         "patience": 5,
@@ -74,8 +71,12 @@ model_params = {
 ```
 
 The model is saved with the contents specified by check_point.
-You can specify the save location with `` `dirpath``` and how many items with the best verification accuracy are saved with `` `save_top_k```. The index at that time is set by ``` mertics```, and whether the accuracy should be large or small is specified by `` `minimize```.
-This index is common to the following early_stopping and hyperparameter search indexes.
+
+You can specify the save location with "dirpath" and how many items with the best verification accuracy are saved with "save_top_k".
+
+The index at that time is set by "mertics", and whether the accuracy should be large or small is specified by "minimize".
+
+This index is common to the following early stopping and hyper parameter search indexes.
 
 ## train model
 
@@ -106,11 +107,16 @@ validation r2=0.33314740657806396
 ```
 
 ## hyper parameter tuning
-If you want to perform hyperparameter search, specify the `` `-hyper``` option in the argument of `` `run.py```, and set the number of trials and search range to `` `hyper`` in the configuration file. Specify with `. See the ax documentation for how to specify the search range (** round throw **). If hyperparameter search is not specified, the parameters specified directly under model_params will be used.
+If you want to perform hyper parameter search, specify the "-hyper" option in the argument of "run.py",
+and set the number of trials and search range to "hyper" in the configuration file.
+
+See the "ax" documentation for how to specify the search range.
 
 ```sh
 $ python run.py -config config/regression.py -hyper
 ```
+
+If hyper parameter search is not specified, the parameters specified directly under "model_params" will be used.
 
 In the case of hyper parameter search, the model is not saved.
 
@@ -126,8 +132,16 @@ In the case of hyper parameter search, the model is not saved.
 ## early stopping
 If you specify the es option, Early Stopping is performed on each attempt.
 
+You can set the stopping conditions with'early_stopping' in the configuration file.
+
+Please see here for details.
+
+https://pytorch-lightning.readthedocs.io/en/stable/generated/pytorch_lightning.callbacks.EarlyStopping.html
+
+
 ## TensorBoard visualization
 A folder "lightning_logs" is created directly under the execution directory.
+
 You can visualize the learning status by specifying the folder during learning and starting the Tensor Board.
 
 Install Tensor Board and run the following from another terminal while learning.
