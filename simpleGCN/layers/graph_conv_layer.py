@@ -39,7 +39,7 @@ class GraphConvLayer(nn.Module):
         activations_by_degree = []
 
         for i, degree in enumerate(self.degrees):
-            # indexとして利用するためlongに変換する
+            # Convert to long for use as index
             atom_neighbors_list = torch.tensor(array_rep[('atom_neighbors', degree)], dtype=torch.long)
             bond_neighbors_list = torch.tensor(array_rep[('bond_neighbors', degree)], dtype=torch.long)
 
