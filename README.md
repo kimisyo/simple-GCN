@@ -108,7 +108,7 @@ validation r2=0.33314740657806396
 
 ## hyper parameter tuning
 If you want to perform hyper parameter search, specify the "-hyper" option in the argument of "run.py",
-and set the number of trials and search range to "hyper" in the configuration file.
+and set the number of trials and search range to "hyper" in the config file.
 
 See the "ax" documentation for how to specify the search range.
 
@@ -132,7 +132,7 @@ In the case of hyper parameter search, the model is not saved.
 ## early stopping
 If you specify the es option, Early Stopping is performed on each attempt.
 
-You can set the stopping conditions with'early_stopping' in the configuration file.
+You can set the stopping conditions with'early_stopping' in the config file.
 
 Please see here for details.
 
