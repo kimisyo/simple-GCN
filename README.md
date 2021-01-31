@@ -1,6 +1,6 @@
 # simple-GCN
 
-This program is a simple implementation of the of the paper below
+This program is a simple implementation of the paper below.
 
 ["Convolutional Networks on Graphs for Learning Molecular Fingerprints."](https://arxiv.org/pdf/1509.09292.pdf)
 
@@ -76,7 +76,7 @@ You can specify the save location with "dirpath" and how many items with the bes
 
 The value of the "mertics" is used at that time, and whether the metircs should be large or small is specified by "minimize".
 
-This metrics is common to the following early stopping and hyper parameter search indexes.
+This metrics is common to the following early stopping and hyper parameter search.
 
 ## train model
 
@@ -147,9 +147,9 @@ You can visualize the learning status by specifying the folder during learning a
 Install Tensor Board and run the following from another terminal while learning.
 
 ```sh
-tensorboard --logdir lightning_logs /
+tensorboard --logdir lightning_logs/
 ```
 
-If you hit http: // localhost: 6006 / in your browser, you can see the learning status.
+If you hit http://localhost:6006/ in your browser, you can see the learning status.
 
 
