@@ -110,7 +110,7 @@ validation r2=0.33314740657806396
 If you want to perform hyper parameter search, specify the "-hyper" option in the argument of "run.py",
 and set the number of trials and search range to "hyper" in the config file.
 
-See the "ax" documentation for how to specify the search range.
+See the ax-platform documentation for how to specify the search range.
 
 ```sh
 $ python run.py -config config/regression.py -hyper
@@ -130,9 +130,9 @@ In the case of hyper parameter search, the model is not saved.
 - learning rate
 
 ## early stopping
-If you specify the es option, Early Stopping is performed on each attempt.
+If you specify the es option, early stopping is performed on each attempt.
 
-You can set the stopping conditions with'early_stopping' in the config file.
+You can set the stopping conditions with "early_stopping" in the config file.
 
 Please see here for details.
 
@@ -146,9 +146,9 @@ You can visualize the learning status by specifying the folder during learning a
 
 Install Tensor Board and run the following from another terminal while learning.
 
-`` `sh
+```sh
 tensorboard --logdir lightning_logs /
-`` ```
+```
 
 If you hit http: // localhost: 6006 / in your browser, you can see the learning status.
 
