@@ -101,6 +101,12 @@ def gcn_collate_fn(batch):
             np.array(molgraph.neighbor_list(('atom', degree), 'bond'), dtype=int)
 
     #print(arrayrep)
+    #print(len(arrayrep["atom_list"]))
+    #print(len(arrayrep[('atom_neighbors', 1)]))
+    #print(len(arrayrep[('bond_neighbors', 1)]))
+    #print(arrayrep['rdkit_ix'])
+    #import sys
+    #sys.exit()
     return arrayrep, labels
 
 

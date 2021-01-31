@@ -4,10 +4,9 @@ import pandas as pd
 class SMILESDataLoader:
 
     def __init__(self, csv_path, smiles_col="smiles", label_props=["label"]):
-        # CSVの読み込み
+        # read csv file
         df = pd.read_csv(csv_path)
 
-        # SMILESの読み込みとMOLへの変換, ラベルの読み込み
         mols = []
         labels_list = []
         for i, samples in enumerate(df[smiles_col].values):
@@ -15,18 +14,12 @@ class SMILESDataLoader:
             mol = Chem.MolFromSmiles(samples)
             if mol is not None:
                 mols.append(mol)
-            else:
-                mols.append(None)
+                labels = [None] * len(label_props)
+                for j, label in enumerate(label_props):
+                    labels[j] = df[label].values[i]
 
-            labels = [None] * len(label_props)
-            #print(labels)
-            for j, label in enumerate(label_props):
-                #print(df[label].values[i])
-                labels[j] = df[label].values[i]
+                labels_list.append(labels)
 
-            labels_list.append(labels)
-
-        #print(labels_list)
         self.mols = mols
         self.labels_list = labels_list
 
@@ -41,27 +34,22 @@ class SDFDataLoader:
         mols = []
         labels_list = []
         for i, mol in enumerate(sdf_sup):
-            labels = []
             if not mol:
                 continue
 
             mols.append(mol)
 
             labels = [None] * len(label_props)
-            #print(labels)
             for j, label in enumerate(label_props):
-                #print(df[label].values[i])
                 try:
                     labels[j] = float(mol.GetProp(label))
                 except Exception as ex:
                     labels[j] = None
 
-
             labels_list.append(labels)
 
         self.mols = mols
         self.labels_list = labels_list
-
 
 def main():
     #loader = SMILESDataLoader("input/BBBP.csv", label_cols=["p_np"])
