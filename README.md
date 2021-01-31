@@ -70,13 +70,13 @@ model_params = {
 }
 ```
 
-The model is saved with the contents specified by check_point.
+The model is saved with the contents specified by "check_point".
 
 You can specify the save location with "dirpath" and how many items with the best verification accuracy are saved with "save_top_k".
 
 The value of the "mertics" is used at that time, and whether the metircs should be large or small is specified by "minimize".
 
-This index is common to the following early stopping and hyper parameter search indexes.
+This metrics is common to the following early stopping and hyper parameter search indexes.
 
 ## train model
 
