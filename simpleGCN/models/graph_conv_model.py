@@ -41,13 +41,13 @@ class GraphConvModel(pl.LightningModule):
             self.graph_pooling_layer_list.append(GraphPoolingLayer(layer_size, fingerprints_size))
             prev_layer_size = layer_size
 
-        for model in self.graph_conv_layer_list:
-            for param in model.parameters():
-                param.requires_grad = False;
-
-        for model in self.graph_pooling_layer_list:
-            for param in model.parameters():
-                param.requires_grad = False;
+        # for model in self.graph_conv_layer_list:
+        #     for param in model.parameters():
+        #         param.requires_grad = False;
+        #
+        # for model in self.graph_pooling_layer_list:
+        #     for param in model.parameters():
+        #         param.requires_grad = False;
 
 
         prev_layer_size = fingerprints_size
