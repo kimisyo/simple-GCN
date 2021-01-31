@@ -129,6 +129,7 @@ def graph_from_smiles_tuple(smiles_tuple):
     big_graph.sort_nodes_by_degree('atom')
     return big_graph
 
+
 def graph_from_smiles(smiles):
     graph = MolGraph()
     mol = MolFromSmiles(smiles)
